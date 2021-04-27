@@ -1,4 +1,7 @@
-[
+
+
+
+                        [
 	{$match: {"members": {$elemMatch: {"account_id": "0db28ed0-7d67-42ef-bd2d-f1cb9a814198"}}}},
  	{$project: {"_id": 0, "email": 1, "members.access": 1}},
  	{$set: {"pending": false}},
@@ -13,3 +16,7 @@
 	     	]}
 	}
 ]
+
+
+
+
