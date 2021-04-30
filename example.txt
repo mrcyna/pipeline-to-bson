@@ -9,7 +9,7 @@
         { "$replaceRoot": {
             "newRoot": { "$mergeObjects": ["$$ROOT", "$members"] }
         }},
-        {$unionWith: {coll: "admins", pipeline: [
+        {$unionWith: {"coll": "admins", "pipeline": [
      			{$match: {"account_id": "0db28ed0-7d67-42ef-bd2d-f1cb9a814198", "status": "pending"}},
  			{$project: {"_id": 0,  "email": 1, "access": 1}},
  			{$set: {"pending": true}}
