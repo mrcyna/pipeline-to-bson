@@ -20,7 +20,7 @@ func main() {
 		fmt.Println("File reading error", err)
 		return
 	}
-	content := strings.TrimSpace(string(data))
+	content := string(data)
 	if !pipeline.Validate(content) {
 		fmt.Println("File is invalid", err)
 		return

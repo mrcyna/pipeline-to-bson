@@ -7,6 +7,7 @@ import (
 
 // Validate will check the input content for valid pipeline statement
 func Validate(content string) bool {
+	content = strings.TrimSpace(content)
 
 	// Pipeline should not be empty
 	if len(content) == 0 {
@@ -71,9 +72,14 @@ func Transform(content string) string {
 	content = re.ReplaceAllString(content, "bson.M{\"$1\":")
 
 	output := ""
-	for _, line := range strings.Split(content,"\n") {
+	lines :=  strings.Split(content,"\n")
+	for i, line :=range  lines{
 		statement := strings.TrimSpace(line)
-		if statement[len(statement)-1:] == "}" {
+		if len(statement) == 0 {
+			continue
+		}
+
+		if statement[len(statement)-1:] == "}" && i < len(lines) - 1{
 			output += statement + ",\n"
 		} else {
 			output += statement + "\n"
